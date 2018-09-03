@@ -8,5 +8,5 @@ Hi all. This is my attempt in exmplaining some of Javascript concepts using anim
 
 ## Sections
 
- - [Execution](execution stack/README.md) stack is one of basic building blocks (there is a pun there) that exists in every second of our JS program. Understanding its concept is a must, but its also an easy task, because there is not much about it.
+ - [Execution stack](https://github.com/var-che/becoming-intimate-with-javascript/tree/master/execution%20stack) stack is one of basic building blocks (there is a pun there) that exists in every second of our JS program. Understanding its concept is a must, but its also an easy task, because there is not much about it.
  - Variables. 
