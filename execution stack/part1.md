@@ -3,7 +3,7 @@ One more important thing that exists from the very beginning of the program is '
 
 So, what kind of stack are we talking about?
 
-![Describing hoisting](animations/stack.gif)
+![Describing hoisting](../animations/stack.gif)
 
 It's LIFO stack, last in, first out. It functions in a way that the last element that made into the stack, is being processed first. In a more concrete way, when we call a function and put it into the 'execution stack', the current function execution is put on hold until the newly created function is done running. When the function is done, the context related to that function is being popped out from the stack and the program resumes. 
 
