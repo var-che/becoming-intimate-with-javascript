@@ -60,7 +60,7 @@ That is a great question. Since the algorithm for VO does not cover the case wit
     }
     
 
-Now, the difference is a bit more visible. In AO, the object that we get immediately upon the creation of the new *execution context* (called function), now has *arguments* object that contains information on formal parameters. And besides *arguments* property, we have identical things that VO contains, a mechanism that stores data, variables and function declarations.
+Now, as you will see it below, the difference is a bit more visible. In AO, the object that we get immediately upon the creation of the new *execution context* (called function), now has *arguments* object that contains information on formal parameters. And besides *arguments* property, we have identical things that VO contains, a mechanism that stores data, variables and function declarations.
 
     firstExecutionContext = {
       AO: {
@@ -73,3 +73,23 @@ Now, the difference is a bit more visible. In AO, the object that we get immedia
       }
     }
 
+    // with that object above
+    globalExecutionContext = {
+      VO: {
+        first: points to some function in memory,
+        b: points string 'b' somewhere in memory,
+        y: points to number 522 somewhere in memory
+      }
+    }
+
+We have reached the part where we have to dive into the execution context concept. Interpreter always has two stages when it sets up new execution context: creation stage and activation stage.
+
+Entering in the creation stage:
+
+Create VO/AO
+ -  If AO, then create *arguments* object. For each formal paramenter in function: create property in AO with a name and the value of the formal parameter.
+ - For each function declaration:
+Create property in VO/AO with a name, that has an address in memory to that function as a value. If there already is  a property in the VO/AO with the same name as this function, overwrite its value.
+ 
+ - For each variable declaration
+ We create a property on the AO/VO with the name as a key of that variable, and putting *undefined*as a value.
