@@ -45,7 +45,7 @@ We have to be more systematic. Let me introduce you with a variable object. It i
 
 In order to be more organized in presenting variables and functions, I am going to take a stack and make/draw a section that will serve me as a record. I am going to track and write the values of variables and function declarations. We said that it is the part of the execution context and because of that, I will draw that section on the right side, to be more organized. In the *global context*, I will put a function declaration (the name that points to a function), along with *b* and *y* variables and their values.
 
-Then, calling the *first* function that has the number *14* as a formal parameter. By calling this function and entering into new *execution context*, we are creating activation object where we can get a new property that we don't have in variable object. That property is called *arguments*. We are making a new *execution context*, that sits on top of *global context* wherein the AO we have *input* that points to *14*, and *z* that points to a string *one*.
+Then, calling the *first* function that has the number *14* as a formal parameter. By calling this function and entering into new *execution context*, we are creating activation object where we can get a new property that we don't have in variable object. That property is called *arguments*. We are making a new *execution context*, wherein the AO we have *input* that points to *14*, and *z* that points to a string *one*.
 
 Now, wait a minute, slow down. I think that all of this was rushed up. I understand that VO stores the data, why all the sudden we have this AO? It has the same purpose as VO, to store data. So why two names for the same thing?
 
@@ -59,6 +59,9 @@ That is a great question. Since the algorithm for VO does not cover the case wit
       }
     }
     
+
+Now, the difference is a bit more visible. In AO, the object that we get immediately upon the creation of the new *execution context* (called function), now has *arguments* object that contains information on formal parameters. And besides *arguments* property, we have identical things that VO contains, a mechanism that stores data, variables and function declarations.
+
     firstExecutionContext = {
       AO: {
         arguments: {
