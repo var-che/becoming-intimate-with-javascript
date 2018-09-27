@@ -124,3 +124,15 @@ Why are you using VO and not AO here? I am doing that because AO is used only wh
 
 OK, I have reached the very last line of my code and there is none other function declaration. So we are resuming to the last part of our algorithm, finding variable declarations. I will start that search from the first line of my code, and in the whole global context, I haven't found any of them. A very important thing to note is that I am only interested in the things declared in the global context, not the ones that are nested inside some function body, like the ones declared in 'first' function. For us, at this point in time, that function is stored only as a series of characters (string) somewhere in memory. Our computer still does not know what is contained inside that function, and the most important part is that it doesn't care now.
 
+Also, by ending the search for variable declarations, we have finished the creation phase, and at this point, we are entering the
+
+Execution phase
+
+In this faze what we care about is the 1. assigning the values (right side of the '=' symbol), 2. calling the function. These are the only things that happen in this phase. We are going to go back to the first line and search for assignments or function calls in the global context, and sure enough, we are finding calling the 'first' function at the last line of our code. That line is calling the 'first' function. 
+
+The function is called. What now?
+Can you guess what is going to happen now, now that the function is called?
+
+As soon as the function is called, we are making a new line in 'call stack' where we are putting execution context of the first function. Because of the LIFO characteristics, the element that last arrived on the stack is being prioritized, while the element below is put on hold. Besides the creation of the new context (row on the stack), we are entering again in the creation phase for that context. An important thing to notise is that now it is AO, where we have arguments object which is employed for taking care of formal parameters.
+
+
