@@ -92,4 +92,35 @@ Create VO/AO
 Create property in VO/AO with a name, that has an address in memory to that function as a value. If there already is  a property in the VO/AO with the same name as this function, overwrite its value.
  
  - For each variable declaration
- We create a property on the AO/VO with the name as a key of that variable, and putting *undefined*as a value.
+ We create a property on the AO/VO with the name as a key of that variable, and putting *undefined* as a value. If that key name already exists in VO/AO, for example, if there is a function declaration or formal parameter with the same name as this variable declaration, do nothing.
+
+
+We will apply this algorithm on this code:
+
+    function first(item) {
+        var a = 424
+        var b = function() {
+    
+        };
+        function c() {
+    
+        };
+        var g = 22;
+    }
+    
+    first('yeaa');
+
+Creation stage
+
+We are entering into creation stage in global context. We are going to follow the algorithm that we have defined above that will search first function declarations and then the variable declarations. We always go from the first line of code and going downwards into search for those things, first being a function declaration. In this code above, we have only one function declaration in our global context, and I am going to write it as a key value pair in my pseudo-object.
+
+    globalExecutionContext = {
+      VO: {
+        first: knows the path to the'first' function code placed somewhere in memory
+      }
+    }
+
+Why are you using VO and not AO here? I am doing that because AO is used only when the function is called because AO has that attributes property that stores formal parameters. The global context is not created with a function call, and since it is not a function, we don't have attached formal parameters for it.
+
+OK, I have reached the very last line of my code and there is none other function declaration. So we are resuming to the last part of our algorithm, finding variable declarations. I will start that search from the first line of my code, and in the whole global context, I haven't found any of them. A very important thing to note is that I am only interested in the things declared in the global context, not the ones that are nested inside some function body, like the ones declared in 'first' function. For us, at this point in time, that function is stored only as a series of characters (string) somewhere in memory. Our computer still does not know what is contained inside that function, and the most important part is that it doesn't care now.
+
